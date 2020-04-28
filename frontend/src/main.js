@@ -1,19 +1,13 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlayCircle, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin, faChrome } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import router from './router';
-import App from './App.vue';
+import router from './router'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
 
-Vue.component('fa-icon', FontAwesomeIcon);
-library.add(faGithub, faLinkedin, faChrome, faPlayCircle, faCheckCircle, faTimesCircle);
-
-
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   router,
+  vuetify,
   render: (h) => h(App),
-}).$mount('#app');
+}).$mount('#app')
