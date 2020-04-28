@@ -13,6 +13,7 @@ require (
 	github.com/jinzhu/gorm v1.9.12
 	github.com/koding/multiconfig v0.0.0-20171124222453-69c27309b2d7
 	github.com/sirupsen/logrus v1.5.0
+	github.com/stretchr/testify v1.4.0
 	github.com/zput/zxcTool v1.3.6
 	gopkg.in/fsnotify.v1 v1.4.7 // indirect
 )

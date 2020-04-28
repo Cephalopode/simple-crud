@@ -29,5 +29,5 @@ func Init() {
 	DB.DB().SetMaxIdleConns(200)
 	DB.DB().SetMaxOpenConns(100)
 	DB.BlockGlobalUpdate(true)
-	DB.LogMode(true)
+	DB.LogMode(conf.C.Database.Debug)
 }

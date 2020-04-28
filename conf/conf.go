@@ -7,14 +7,16 @@ import (
 )
 
 type Server struct {
-	Reset    bool `default:"false"`
-	Port     int  `default:"8080"`
-	Database struct {
+	IsProduction bool `default:"false"`
+	Reset        bool `default:"false"`
+	Port         int  `default:"8080"`
+	Database     struct {
 		Host     string `default:"127.0.0.1"`
 		Port     int    `default:"3306"`
 		User     string `default:"root"`
 		Password string
 		DB       string `default:"simple_crud"`
+		Debug    bool
 	}
 }
 
@@ -26,6 +28,6 @@ func Init() {
 	C = new(Server)
 
 	m.MustLoad(C) // Panic's if there is any error
-	fmt.Println("conf: %+v", C)
+	fmt.Printf("configuration: %+v\n\n", C)
 
 }

@@ -23,6 +23,7 @@ func List(c *gin.Context) {
 
 func Add(c *gin.Context) {
 	type object struct {
+		ID   uint
 		Name string `binding:"required"`
 		Age  int
 	}
@@ -33,7 +34,7 @@ func Add(c *gin.Context) {
 		return
 	}
 
-	newUser := models.Users{Name: req.Name, Age: req.Age}
+	newUser := models.Users{ID: req.ID, Name: req.Name, Age: req.Age}
 	if err := db.DB.Save(&newUser).Error; err != nil {
 		logrus.Error(err)
 		c.JSON(http.StatusInternalServerError, err.Error())

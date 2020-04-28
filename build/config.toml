@@ -1,2 +1,5 @@
+IsProduction = false
+PORT = 3000
 [Database]
     Password = "167"
+    Debug = true
