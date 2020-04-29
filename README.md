@@ -1,15 +1,15 @@
-# Simple CRUD user management
+# Simple CRUD user management console
 
 #### Demo at ```www.crud.thomasparadis.me```
 
 ## How to run
 1. `cd build; docker-compose up -d db`
-1.  wait a few seconds for db to initialize
+1.  Wait a few seconds for db to initialize
 1. `docker-compose up -d app`
-1. app is now running on localhost:4006 
+1. App is now running on localhost:4006 
 
 ## Run tests
-1. after db is initialized
+1. Wait for db to be initialized
 1. `docker-compose up -d app-test`
 
 ## Possible improvements
@@ -19,10 +19,10 @@
 1. Wrap "users" methods into an interface so the same methods can be reused to manipulate other tables.
 1. Authentification system. This would require : login page and login method, admin table (container username and password hashes), store session_id as a cookie or in local storage.
 
-## Architechture choices
+## Architecture choices
 1. UI framework : Vuetify. I'm more familiar with Element UI but it's not reactive, so I chose to experiment with a new framework for this projet. Vuetify is currently the leading UI framework for Vue.js (along with Quasar)
 1. Webserver : Go + gin + gorm. Gorm allows to easily manipulate mysql databases.
-1. Deployment : Docker-compose. This wrapper over docker allows to easily manage multi-container apps. Also, using the parameter `restart: alway`, the containers are automatically restarted if an error appears. A more robust way would be to use kubernetes to deploy the containers in multiple nodes (servers) so there is redundancy if one of the servers is unreachable.
+1. Deployment : Docker-compose. This wrapper over docker allows to easily manage multi-container apps. Also, using the parameter `restart: alway`, the containers are automatically restarted if an error occurs. A more robust way would be to use kubernetes to deploy the containers in multiple nodes (servers) so there is redundancy if one of the servers is unreachable.
 
 
 
