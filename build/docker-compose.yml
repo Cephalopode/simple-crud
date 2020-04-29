@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: simple_crud_db
+    restart: always
+    environment:
+      - MYSQL_DATABASE=simple_crud
+      - MYSQL_ROOT_PASSWORD=o2jhg0Hk0J320H3JKLnfh
+    volumes:
+      - /var/lib/simple_crud_mysql:/var/lib/mysql
+  app:
+    build: ..
+    container_name: simple_crud_app
+    restart: on-failure
+    volumes:
+      - "./config_prod.toml:/go/src/app/build/config.toml"
+    ports:
+      - "4006:8080"
+    depends_on:
+      - db
+  app-test:
+    build: ..
+    container_name: simple_crud_app_test
+    volumes:
+      - "./config_prod.toml:/go/src/app/build/config.toml"
+    command:
+      - bash
+      - -c
+      - go test

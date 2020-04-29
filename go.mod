@@ -9,6 +9,7 @@ require (
 	github.com/fatih/camelcase v1.0.0 // indirect
 	github.com/fatih/color v1.9.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
+	github.com/gin-contrib/static v0.0.0-20191128031702-f81c604d8ac2
 	github.com/gin-gonic/gin v1.6.2
 	github.com/jinzhu/gorm v1.9.12
 	github.com/koding/multiconfig v0.0.0-20171124222453-69c27309b2d7

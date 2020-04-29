@@ -11,6 +11,7 @@ import (
 	"simple-crud/models"
 
 	nestedFormatter "github.com/antonfisher/nested-logrus-formatter"
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"github.com/zput/zxcTool/ztLog/zt_formatter"
@@ -32,6 +33,8 @@ func setupRouter() *gin.Engine {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	r := gin.Default()
+	r.Use(static.ServeRoot("/", conf.C.DistDir))
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",

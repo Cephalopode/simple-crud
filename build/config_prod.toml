@@ -1,0 +1,7 @@
+IsProduction = true
+Reset = true
+Port = 8080
+[Database]
+    Host = "db"
+    Password = "o2jhg0Hk0J320H3JKLnfh"
+    Debug = false

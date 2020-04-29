@@ -7,9 +7,10 @@ import (
 )
 
 type Server struct {
-	IsProduction bool `default:"false"`
-	Reset        bool `default:"false"`
-	Port         int  `default:"8080"`
+	IsProduction bool   `default:"false"`
+	Reset        bool   `default:"false"`
+	Port         int    `default:"8080"`
+	DistDir      string `default:"frontend/dist"`
 	Database     struct {
 		Host     string `default:"127.0.0.1"`
 		Port     int    `default:"3306"`

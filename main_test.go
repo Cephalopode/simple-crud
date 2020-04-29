@@ -38,7 +38,6 @@ func readBodytoUserList(t *testing.T, w *httptest.ResponseRecorder) []models.Use
 }
 func TestServer(t *testing.T) {
 	conf.Init()
-	conf.C.Database.DB = conf.C.Database.DB + "_test"
 	conf.C.Database.Debug = false
 	conf.C.Reset = true
 	gin.SetMode(gin.TestMode)
@@ -49,23 +48,24 @@ func TestServer(t *testing.T) {
 		assert.Equal(t, http.StatusOK, w.Code)
 	})
 	t.Run("list users", func(t *testing.T) {
-		// Create user and check
-		w := performRequest(router, "PUT", "/api/users", gin.H{"name": "test1", "age": 20})
+		// Create/Edit user and check
+		w := performRequest(router, "PUT", "/api/users", gin.H{"id": 1, "name": "test1", "age": 20})
 		assert.Equal(t, http.StatusCreated, w.Code)
 
 		w = performRequest(router, "GET", "/api/users", nil)
 		assert.Equal(t, http.StatusOK, w.Code)
 		users := readBodytoUserList(t, w)
 		assert.Equal(t, "test1", users[0].Name)
+		lengthBefore := len(users)
 
-		// Delete user and check
+		// Delete user and check that there is one less user
 		w = performRequest(router, "DELETE", "/api/users", gin.H{"id": 1})
 		assert.Equal(t, http.StatusOK, w.Code)
 
 		w = performRequest(router, "GET", "/api/users", nil)
 		assert.Equal(t, http.StatusOK, w.Code)
 		users = readBodytoUserList(t, w)
-		assert.Equal(t, 0, len(users))
+		assert.Equal(t, lengthBefore-1, len(users))
 
 	})
 }
